@@ -4,7 +4,7 @@ project(akinator)
 
 FILE(GLOB akinator_sources *.cpp)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++11 -ggdb)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 

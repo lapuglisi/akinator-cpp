@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "akinator_ui.hpp"
 
@@ -25,12 +26,26 @@ namespace app
     /* Public methods */
     void console_ui::do_display(const std::string& prompt)
     {
+        std::cout.clear();
         std::cout << prompt;
     }
 
     const std::string &console_ui::get_answer(std::string& answer)
     {
+        std::cin.clear();
         std::cin >> answer;
+
+        return answer;
+    }
+
+    const std::string &console_ui::get_line(std::string& answer)
+    {
+        while (std::cin.peek() == '\n')
+        {
+            std::cin.ignore();
+        }
+
+        std::getline(std::cin, answer, '\n');
 
         return answer;
     }

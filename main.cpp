@@ -15,10 +15,13 @@ int main(int argc, char **argv)
             app->set_humor_me(true);
         }
     }
-
     
-    if (app->init())
+    for (;;)
     {
+        if ( !app->init() )
+        {
+            break;
+        }
         app->game_on();
     }
 

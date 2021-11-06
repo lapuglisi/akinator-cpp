@@ -30,6 +30,7 @@ namespace app
 
         void do_display(const std::string& /*prompt*/);
         const std::string &get_answer(std::string& /*answer*/);
+        const std::string &get_line(std::string& /*answer*/);
     };
 }
 }
