@@ -54,7 +54,14 @@ namespace creatures
     private:
     };
 
-    typedef std::map<unsigned int, std::string> creature_types_t;
+    /* Typedefs for creature_model */
+    typedef enum 
+    {
+        lives_in_water = 1,
+        everything_else = 2
+    } creature_type_t;
+
+    typedef std::map<creature_type_t, std::string> creature_types_t;
     typedef std::vector<creature> creature_collection_t;
 
     class animal_model : public creature_model
@@ -69,8 +76,12 @@ namespace creatures
     protected:
 
     public:
+        /* CTOR / DTOR */    
         animal_model();
         ~animal_model();
+
+        /* Constants */
+        static constexpr creature_type_t default_type = creature_type_t::everything_else;
 
         const creature_types_t& get_types() const;
 
@@ -81,7 +92,7 @@ namespace creatures
 
         creature_collection_t& filter_by_type(creature_collection_t& /*creatures*/, unsigned int /*type*/);
 
-        bool get_default_by_type(unsigned int /*type*/, creature& /*target*/) const;
+        bool get_default_by_type(creature_type_t /*type*/, creature& /*target*/) const;
 
         static animal_model* instance();
     };

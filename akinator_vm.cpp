@@ -90,7 +90,7 @@ namespace presenter
         akinator::app::console_ui* ui = akinator::app::console_ui::instance();
         models::animal_model *model = models::animal_model::instance();
 
-        unsigned int animal_type = 2; // TODO: use constants
+        models::creature_type_t animal_type = models::animal_model::default_type;
 
         models::creature_types_t::const_iterator it;
         for (it = model->get_types().begin(); 
@@ -127,7 +127,7 @@ namespace presenter
         return false;
     }
 
-    bool ui_handler::guess_by_type(unsigned int type)
+    bool ui_handler::guess_by_type(models::creature_type_t type)
     {
         bool success = false;
         bool yes_chosen = false;
@@ -254,7 +254,7 @@ namespace presenter
         return yes_chosen;
     }
 
-    void ui_handler::ask_for_creature(unsigned int type, const models::creature& compared)
+    void ui_handler::ask_for_creature(models::creature_type_t type, const models::creature& compared)
     {
         std::string prompt;
         std::string name, ability;

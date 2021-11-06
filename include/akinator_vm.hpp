@@ -36,11 +36,11 @@ namespace presenter
         void set_humor_me(bool /*doit*/);
 
     protected:        
-        void ask_for_creature(unsigned int /*type*/, const akinator::creatures::creature& /*compared*/);
+        void ask_for_creature(akinator::creatures::creature_type_t /*type*/, const akinator::creatures::creature& /*compared*/);
 
         void im_a_winner();
 
-        bool guess_by_type(unsigned int /*type*/);
+        bool guess_by_type(akinator::creatures::creature_type_t /*type*/);
 
 
     private:

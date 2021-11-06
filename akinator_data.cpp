@@ -99,7 +99,7 @@ namespace creatures
     void animal_model::init()
     {
         // Initialize animal types so that the ViewModel may use it
-        m_animal_types.insert(std::make_pair<unsigned, std::string>(1, "live in water"));
+        m_animal_types[creature_type_t::lives_in_water] = "live in water";
 
         // Initialize default collection
         creature new_creature;
@@ -107,7 +107,7 @@ namespace creatures
         // Monkey - does not live in water
         new_creature.set_name("monkey");
         new_creature.set_ability("eat bananas");
-        new_creature.set_type(2);
+        new_creature.set_type(creature_type_t::everything_else);
         new_creature.set_is_default(true);
 
         m_defaults.push_back(new_creature);
@@ -115,7 +115,7 @@ namespace creatures
         // shark - lives in water
         new_creature.set_name("shark");
         new_creature.set_ability("kills people");
-        new_creature.set_type(1);
+        new_creature.set_type(creature_type_t::lives_in_water);
         new_creature.set_is_default(true);
 
         m_defaults.push_back(new_creature);
@@ -150,7 +150,7 @@ namespace creatures
         return creatures;
     }
 
-    bool animal_model::get_default_by_type(unsigned int type, creature& target) const
+    bool animal_model::get_default_by_type(creature_type_t type, creature& target) const
     {
         bool found = false;
         creature_collection_t::const_iterator it;
