@@ -5,7 +5,7 @@ namespace akinator
 namespace creatures
 {
     /* Class creature */
-    creature::creature() : m_kingdom("animal")
+    creature::creature()
     {        
     }
 

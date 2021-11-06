@@ -88,10 +88,32 @@ namespace presenter
         akinator::app::console_ui* ui = akinator::app::console_ui::instance();
         creatures::animal_model *model = creatures::animal_model::instance();
 
-        iss << "Does the " << model->get_kingdom() << " you tought " << model->get_filter() << "? (Y/N) ";
+        for (;;)
+        {
+            iss.clear();
+            iss.str("");
+            iss << "Does the " << model->get_kingdom() << " you tought " << model->get_filter() << "? (Y/N) ";
 
-        ui->do_display(iss.str());
-        ui->get_answer(answer);
+            ui->do_display(iss.str());
+            ui->get_answer(answer);
+            char chosen = std::toupper(answer[0]);
+
+            if ('Y' == chosen)
+            {
+                // Tell 'model' to guess animals that live in water
+                break;
+            }
+            else if ('N' == chosen)
+            {
+                // Tell 'model' to guess animals that do not live in water
+                break;
+            }
+            else
+            {
+                ui->do_display("\nInvalid choice\n");
+                continue;
+            }
+        }
     }
 
     /* Properties */
