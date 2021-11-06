@@ -50,7 +50,7 @@ namespace presenter
 
             ui->get_answer(answer);
 
-            char chosen = std::towupper(answer[0]);
+            char chosen = std::toupper(answer[0]);
 
             if ('C' == chosen)
             {
@@ -169,6 +169,7 @@ namespace presenter
                 {
                     ask_for_creature(type, *it);
                     success = true;
+                    break;
                 }
             }
             else // answer == 'N'
